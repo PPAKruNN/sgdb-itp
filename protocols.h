@@ -4,6 +4,7 @@
 #define DB_FOLDER_PATH "db"
 #define TABLES_FILE_PATH "db/tables"
 
-#define TABLES_FILE_HEADER "(%d)"
+#define TABLE_INFO_SCHEMA_FORMAT "(%s:%s:%i)"
+#define COLUMN_SCHEMA_FORMAT "[%s:%c]"
 
 #endif // PROTOCOLS_H

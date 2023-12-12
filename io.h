@@ -4,9 +4,9 @@
 void createDirectory();
 void enviromentSetup();
 void createMainTablesFile();
-void createTableFile(char path[256]);
-void appendRowInFile(char path[256], char * str);
-void updateRowInFile(char filepath[256], size_t target, char msg[256]);
+void createTableFile(char * path);
+void appendRowInFile(char * path, char * str);
+void updateRowInFile(char * filepath, size_t target, char * msg);
 
 
 #endif

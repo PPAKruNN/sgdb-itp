@@ -17,6 +17,8 @@ void createDirectory() {
 
 void createMainTablesFile() {
 
+  createDirectory();
+
   FILE * ftables;
   ftables = fopen(TABLES_FILE_PATH, "r");
   if(ftables == NULL) {
@@ -27,7 +29,24 @@ void createMainTablesFile() {
 
 }
 
-void createTableFile(char path[256]) {
+/**
+ If the file exists, return 1.
+ Else, return 0.
+*/
+int checkIfFileExist(char * path) {
+
+  FILE * file;
+  file = fopen(path, "r");
+
+  if(file == NULL) {
+    return 0;
+  }
+
+  return 1;
+
+}
+
+void createTableFile(char * path) {
 
   FILE * file;
   file = fopen(path, "r");
@@ -40,7 +59,7 @@ void createTableFile(char path[256]) {
 
 }
 
-void appendRowInFile(char path[256], char * str) {
+void appendRowInFile(char * path, char * str) {
 
   FILE * ftables;
   ftables = fopen(path, "a");
@@ -80,7 +99,7 @@ size_t countRowInFile(FILE * file) {
 /*
   Receives a filepath string and update target row using the msg string.
 */ 
-void updateRowInFile(char filepath[256], size_t target, char msg[256]) {
+void updateRowInFile(char * filepath, size_t target, char * msg) {
 
 
   FILE * file;
@@ -88,7 +107,7 @@ void updateRowInFile(char filepath[256], size_t target, char msg[256]) {
   file = fopen(filepath, "r");
   ftemptable = fopen("tempfile", "w");
 
-  char buffer[256];
+  char buffer[512];
   
   size_t count = countRowInFile(file);
   if(target > count - 1) {
