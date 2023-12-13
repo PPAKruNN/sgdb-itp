@@ -4,6 +4,7 @@
 
 #include "io.h"
 #include "protocols.h"
+#include "utils.h"
 
 /*
     If table exists, return the number it occupies on the file (starting on 0).
@@ -13,19 +14,19 @@ int checkTableExistence(char * tableName) {
 
     FILE * file;
     file = fopen(TABLES_FILE_PATH, "r");
-    if(file == NULL) return 0;
+    if(file == NULL) return -1;
 
     char line[512];
     int count = 0;
 
-    fpos_t position;
+    int position = 0;
 
     while(fgets(line, sizeof(line), file)) {
         char table[32];
         sscanf(line, "(%[^:]:", table);
 
-        if(strcmp(table, tableName) == 0) return position.__pos;
-        fgetpos(file, &position);
+        if(strcmp(table, tableName) == 0) return position; 
+        ftell(file);
 
         count++;
     }
@@ -193,6 +194,83 @@ void listTables() {
 
 }
 
-void addRow() {
+void addRowToTable() {
+
+    char tableName[32];
+    puts("Enter table name:");
+    scanf("%s", tableName);
+
+    int pos = checkTableExistence(tableName);
+    if(pos == -1) {
+        puts("Table not found");
+        exit(3);
+    }
+
+    FILE * ftable;
+    FILE * tablesFile;
+    char path[64];
+    sprintf(path, "%s/%s", DB_FOLDER_PATH, tableName);
+
+    tablesFile = fopen(TABLES_FILE_PATH, "r");
+    ftable = fopen(path, "r");
+
+    char tableInfo[512];
+    int rowCount;
+    char cols[256];
+    char row[1024] = "(";
+    char * next = cols;
+
+    fseek(tablesFile, pos, SEEK_SET);
+    fscanf(tablesFile, "%[^\n] ", tableInfo);
+    sscanf(tableInfo, "(%*[^:]:%*[^:]:%d)%s", &rowCount, cols);
+
+    for (int i = 0; i < rowCount; i++)
+    {
+        system("clear");
+        char column[32];
+        char type;
+
+        char value[32];
+        char formated[33];
+
+        sscanf(next, "[%[^:]:%c]", column, &type);
+
+        char * new = strchr(next, ']');
+        next = new + 1;
+
+        if(type == 'P') {
+            puts("Enter value for Primary key \n(Column Type: Unique Unsigned Integer)");
+            __u_int pk = 0;
+
+            int qtd = scanf(" %u", &pk);
+            if(qtd == 0) {
+                puts("Invalid input");
+                exit(3);
+            }
+
+            puts("Implement uniqueness check");
+            sprintf(value, "%u", pk);
+
+            strcat(row, value);
+
+            continue;
+        };
+
+        printf("Enter value for column %s: \n(Column Type: %c) \n", column, type);
+
+        typedScanf(type, value);
+
+        sprintf(formated, ":%s", value);
+        strcat(row, formated);
+
+    }
+
+    strcat(row, ")");
+
+    appendRowInFile(path, row);
+
+
+    fclose(ftable);
+    fclose(tablesFile);
 
 }

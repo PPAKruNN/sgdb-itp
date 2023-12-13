@@ -8,34 +8,34 @@
 void menu() {
     int option = 0;
 
-    while(option != 4) {
-        puts("1. Create table");
-        puts("2. List tables");
-        puts("3. Print table");
-        puts("4. Exit");
+    puts("1. Create table");
+    puts("2. List tables");
+    puts("3. Print table");
+    puts("4. Add row to table");
+    puts("5. Exit");
 
-        scanf("%i", &option);
+    scanf("%i", &option);
 
-        switch (option)
-        {
-        case 1:
-            createTable();
-            break;
-        case 2:
-            listTables();
-            break;
-        case 3:
-            print();
-            break;
-        case 4:
-            exit(0);
-            break;
-        default:
-            puts("Invalid option");
-            break;
-        }
-
-        option = 0;
+    switch (option)
+    {
+    case 1:
+        createTable();
+        break;
+    case 2:
+        listTables();
+        break;
+    case 3:
+        print();
+        break;
+    case 4:
+        addRowToTable();
+        break;
+    case 5:
+        exit(0);
+        break;
+    default:
+        puts("Invalid option");
+        break;
     }
 }
 

@@ -3,6 +3,7 @@
 
 void createTable();
 void printTable(char * tableInfo);
+void addRowToTable();
 void print();
 void listTables();
 
