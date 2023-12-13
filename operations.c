@@ -41,11 +41,10 @@ void printTable(char * tableInfo) {
 
     sscanf(tableInfo, format, tableName, path, &columnCount, colstring);
 
-    printf("Table name: %s\n", tableName);
-    puts("Table Schema:");
-    puts("-------------------------------------");
-    puts("|            name            | type |");
-    puts("-------------------------------------");
+    puts("-----------------------------------------");
+    printf("| Table name: %-25s |\n", tableName);
+    puts("| Column                         | Type |");
+    puts("-----------------------------------------");
     
     for (int i = 0; i < columnCount; i++)
     {
@@ -59,9 +58,9 @@ void printTable(char * tableInfo) {
             next = endBracket + 1;
         }
 
-        printf("| %s | %c |\n", columnName, type);
+        printf("| %-30s | %-4c |\n", columnName, type);
     }
-    
+    puts("-----------------------------------------");
 
 }
 
