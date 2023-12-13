@@ -46,6 +46,16 @@ int checkIfFileExist(char * path) {
 
 }
 
+void executeForEachLine(void (*callback)(char *), FILE * file) {
+
+  char buffer[1024];
+
+  while(fscanf(file, "%[^\n] ", buffer) != EOF) {
+    callback(buffer);
+  }
+
+}
+
 void createTableFile(char * path) {
 
   FILE * file;
@@ -140,9 +150,6 @@ void updateRowInFile(char * filepath, size_t target, char * msg) {
 
   rename("tempfile", filepath);
 }
-
-
-
 
 void enviromentSetup() {
 

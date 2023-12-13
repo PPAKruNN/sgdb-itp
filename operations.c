@@ -128,3 +128,12 @@ void createTable() {
     puts("Table created!");
     printTable(tableInfo);
 }
+
+void listTables() {
+
+    FILE * tablesFile;
+    tablesFile = fopen(TABLES_FILE_PATH, "r");
+
+    executeForEachLine(printTable, tablesFile);
+
+}

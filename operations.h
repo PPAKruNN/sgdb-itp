@@ -3,5 +3,6 @@
 
 void createTable();
 void printTable(char * tableInfo);
+void listTables();
 
 #endif // OPERATIONS_H

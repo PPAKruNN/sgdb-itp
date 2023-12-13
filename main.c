@@ -7,7 +7,7 @@
 int main() {
     enviromentSetup();
 
-    printTable("(aaaaaaa:db/aaaaaaa:3)[PK:P][aaaa:b][bbbb:a]");
+    listTables();
 
     return 0;
 }
