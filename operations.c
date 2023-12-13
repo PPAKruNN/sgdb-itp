@@ -18,11 +18,15 @@ int checkTableExistence(char * tableName) {
     char line[512];
     int count = 0;
 
+    fpos_t position;
+
     while(fgets(line, sizeof(line), file)) {
         char table[32];
         sscanf(line, "(%[^:]:", table);
 
-        if(strcmp(table, tableName) == 0) return count;
+        if(strcmp(table, tableName) == 0) return position.__pos;
+        fgetpos(file, &position);
+
         count++;
     }
 
@@ -64,8 +68,33 @@ void printTable(char * tableInfo) {
 
 }
 
+void print() {
+    char buffer[32];
+
+    puts("Enter table name:");
+    scanf("%32s", buffer);
+
+    int pos = checkTableExistence(buffer);
+    if(pos == -1) {
+        puts("Table not found");
+        exit(3);
+    }
+
+    FILE * tablesFile;
+    tablesFile = fopen(TABLES_FILE_PATH, "r");
+    
+    char tableInfo[512];
+
+    fseek(tablesFile, pos, SEEK_SET);
+    fscanf(tablesFile, "%[^\n] ", tableInfo);
+
+    printTable(tableInfo);
+
+}
+
 void createTable() {
 
+    system("clear");
     puts("Table creation");
     puts("Enter table name:");
 
@@ -81,12 +110,26 @@ void createTable() {
 
     int columnCount = 1;
     char buffer[256];
-    char cols[256] = "[PK:P]";
+    char cols[256];
 
+    char pkname[32];
+    puts("First, give a name to the primary key column:");
+    scanf("%32s", pkname);
+    sprintf(cols, "[%s:P]", pkname);
+
+    system("clear");
     puts("Now, enter the columns and types in the format: \"colum_name:type\":");
+    puts("Available types:");
+    puts("I - Integer");
+    puts("F - Float");
+    puts("D - Double");
+    puts("C - Char");
+    puts("S - String");
     puts("(press Ctrl+D or type \"quit\" to finish)");
     while (scanf("%s", buffer) != EOF)
     {
+        system("clear");
+
         if(strcmp(buffer, "quit") == 0) break;
 
         char column[32];
@@ -99,7 +142,19 @@ void createTable() {
             puts("Example: \"username:S\"");
             continue;
         } else {
-            puts(tableName);
+
+            if(type != 'I' && type != 'F' && type != 'D' && type != 'C' && type != 'S') {
+                system("clear");
+                puts("Invalid type");
+                puts("Available types:");
+                puts("I - Integer");
+                puts("F - Float");
+                puts("D - Double");
+                puts("C - Char");
+                puts("S - String");
+                continue;
+            }
+
             printf("Column %i created! Column name: %s, type: %c\n", columnCount, column, type);
 
             columnCount++;
@@ -135,5 +190,9 @@ void listTables() {
     tablesFile = fopen(TABLES_FILE_PATH, "r");
 
     executeForEachLine(printTable, tablesFile);
+
+}
+
+void addRow() {
 
 }

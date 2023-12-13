@@ -1,5 +1,1 @@
-(teste:db/teste:3)[PK:P][roberto:j][oiagente:a]
-(kkk:db/kkk:3)[PK:P][aaa:a][oiia:b]
-(roberto:db/roberto:4)[PK:P][idade:i][name:s][gender:c]
-(pedro:db/pedro:4)[PK:P][idade:i][nome:s][jose:a]
-(aaaaaaa:db/aaaaaaa:3)[PK:P][aaaa:b][bbbb:a]
+(king:db/king:4)[id:P][name:S][idade:I][gender:C]
