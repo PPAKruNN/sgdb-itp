@@ -113,13 +113,12 @@ size_t countRowInFile(FILE * file) {
 */ 
 void updateRowInFile(char * filepath, size_t target, char * msg) {
 
-
   FILE * file;
   FILE * ftemptable;
   file = fopen(filepath, "r");
   ftemptable = fopen("tempfile", "w");
 
-  char buffer[512];
+  char buffer[1024];
   
   size_t count = countRowInFile(file);
   if(target > count - 1) {
@@ -129,28 +128,32 @@ void updateRowInFile(char * filepath, size_t target, char * msg) {
 
   setCursorToStartOfFile(file);
 
-  for (size_t i = 0; i < count - 1; i++)
+  size_t i = 0;
+  while(fscanf(file, " %[^\n] ", buffer) != EOF)
   {
-    fscanf(file, "%[^\n] ", buffer);
-    printf("%lu", i);
-    puts(buffer);
-
 
     if(i == target) {
+      if(strcmp(msg, "skip") == 0){
+        puts("skip");
+        i++;
+        continue;
+      };
       fputs(msg, ftemptable);
-      puts("Linha alterada");
     } else {
       fputs(buffer, ftemptable);
-      puts("Linha nao alterada");
     }
 
     fputs("\n", ftemptable);
+    i++;
   }
 
   fclose(file);
   fclose(ftemptable);
 
-  rename("tempfile", filepath);
+  if (rename("tempfile", filepath) != 0) {
+    perror("Error renaming file");
+    exit(EXIT_FAILURE);
+}
 }
 
 int checkTableExistence(char * tableName) {

@@ -13,6 +13,6 @@ void executeForEachLine(void (*callback)(char *), FILE * file);
 Table * loadTableInfo();
 Table * loadTableInfoByRawInfo(char * tableInfo);
 int interactiveMenu(char ** options, int optionsCount, char * title);
-
+void setCursorToStartOfFile(FILE * file);
 
 #endif

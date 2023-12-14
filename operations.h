@@ -8,5 +8,6 @@ void print();
 void listTables();
 void readTable();
 void readTableColumn();
+void deleteRowFromTable();
 
 #endif // OPERATIONS_H

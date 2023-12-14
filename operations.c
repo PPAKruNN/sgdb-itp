@@ -368,6 +368,47 @@ void readTable() {
     executeForEachLine(printTableValues, table->file);
 }
 
+void deleteRowFromTable() {
+
+    Table * table = loadTableInfo();
+    __u_int pk = 0;
+
+    puts("Enter the primary key of the row you want to delete: ");
+    int qtd = scanf("%u", &pk);
+    if(qtd != 1) {
+        puts("Invalid input");
+        exit(3);
+    }
+
+    char pkstring[32];
+    sprintf(pkstring, "%u", pk);
+
+    int found = searchColumn(table, 0, EQUALS, pkstring);
+    if(found == 0) {
+        puts("Doesn't exist a row with this primary key");
+        exit(3);
+    }
+
+    char * buffer = malloc(sizeof(char) * 1024);
+    size_t count = 0;
+
+    setCursorToStartOfFile(table->file);
+
+    while(fscanf(table->file, "%[^\n] ", buffer) != EOF) {
+        
+        char value[32];
+        sscanf(buffer, "(%[^:]", value);
+
+        if(strcmp(value, pkstring) == 0) {
+            fclose(table->file);
+            updateRowInFile(table->path, count, "skip");
+            break;
+        }
+
+        count++;
+    }
+}
+
 void readTableColumn() {
     
     Table * table = loadTableInfo();

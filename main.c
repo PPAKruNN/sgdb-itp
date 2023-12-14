@@ -10,7 +10,7 @@ void menu() {
 
 
     char * title = "Main menu";
-    int count = 7;
+    int count = 9;
     char ** options = (char **) malloc(sizeof(char *) * count);
 
     options[0] = "Create table";
@@ -19,7 +19,9 @@ void menu() {
     options[3] = "Add row to table";
     options[4] = "Read Table";
     options[5] = "Search on table";
-    options[6] = "Exit";
+    options[6] = "Delete row of table";
+    options[7] = "Delete table";
+    options[8] = "Exit";
 
     option = interactiveMenu(options, count, title);
 
@@ -44,6 +46,9 @@ void menu() {
         readTableColumn();
         break;
     case 6:
+        deleteRowFromTable();
+        break;
+    case 8:
         exit(0);
         break;
     default:
