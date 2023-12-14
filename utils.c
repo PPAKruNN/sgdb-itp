@@ -11,7 +11,7 @@ void typedScanf(char type, char * target) {
     switch (type)
     {
     case 'I':
-        int qtd = scanf(" %i", &i);
+        qtd = scanf(" %i", &i);
         if(qtd == 0) {
             puts("Invalid input");
             exit(3);

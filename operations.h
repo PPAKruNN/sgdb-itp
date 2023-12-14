@@ -6,5 +6,7 @@ void printTable(char * tableInfo);
 void addRowToTable();
 void print();
 void listTables();
+void readTable();
+void readTableColumn();
 
 #endif // OPERATIONS_H

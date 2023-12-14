@@ -8,29 +8,42 @@
 void menu() {
     int option = 0;
 
-    puts("1. Create table");
-    puts("2. List tables");
-    puts("3. Print table");
-    puts("4. Add row to table");
-    puts("5. Exit");
 
-    scanf("%i", &option);
+    char * title = "Main menu";
+    int count = 7;
+    char ** options = (char **) malloc(sizeof(char *) * count);
+
+    options[0] = "Create table";
+    options[1] = "List all tables schema";
+    options[2] = "Print one table schema";
+    options[3] = "Add row to table";
+    options[4] = "Read Table";
+    options[5] = "Search on table";
+    options[6] = "Exit";
+
+    option = interactiveMenu(options, count, title);
 
     switch (option)
     {
-    case 1:
+    case 0:
         createTable();
         break;
-    case 2:
+    case 1:
         listTables();
         break;
-    case 3:
+    case 2:
         print();
         break;
-    case 4:
+    case 3:
         addRowToTable();
         break;
+    case 4:
+        readTable();
+        break;
     case 5:
+        readTableColumn();
+        break;
+    case 6:
         exit(0);
         break;
     default:
