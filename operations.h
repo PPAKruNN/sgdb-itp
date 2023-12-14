@@ -9,5 +9,6 @@ void listTables();
 void readTable();
 void readTableColumn();
 void deleteRowFromTable();
+void deleteTable();
 
 #endif // OPERATIONS_H

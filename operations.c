@@ -17,7 +17,7 @@ int tempCheckTableExistence(char * tableName) {
     file = fopen(TABLES_FILE_PATH, "r");
     if(file == NULL) return -1;
 
-    char line[512];
+    char line[1024];
     int count = 0;
 
     int position = 0;
@@ -27,7 +27,7 @@ int tempCheckTableExistence(char * tableName) {
         sscanf(line, "(%[^:]:", table);
 
         if(strcmp(table, tableName) == 0) return position; 
-        ftell(file);
+        position = ftell(file);
 
         count++;
     }
@@ -407,6 +407,35 @@ void deleteRowFromTable() {
 
         count++;
     }
+}
+
+void deleteTable() {
+
+    Table * table = loadTableInfo();
+    fclose(table->file);
+    FILE * tablesFile = fopen(TABLES_FILE_PATH, "r+");
+
+    int pos = tempCheckTableExistence(table->name);
+    if(pos == -1) {
+        puts("Table not found");
+        exit(3);
+    }
+
+    char buffer[1024];
+    size_t i = 0;
+    while(fscanf(tablesFile, "%[^\n] ", buffer) != EOF) {
+        char value[32];
+        sscanf(buffer, "(%[^:]", value);
+
+        if(strcmp(value, table->name) == 0) {
+            fclose(tablesFile);
+            updateRowInFile(TABLES_FILE_PATH, i, "skip");
+            break;
+        }
+        i++;
+    }
+    remove(table->path);
+
 }
 
 void readTableColumn() {

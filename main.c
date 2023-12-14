@@ -48,6 +48,9 @@ void menu() {
     case 6:
         deleteRowFromTable();
         break;
+    case 7:
+        deleteTable();
+        break;
     case 8:
         exit(0);
         break;
