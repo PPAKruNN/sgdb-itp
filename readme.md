@@ -37,35 +37,35 @@ Ao executar o código, o usuário verá um menu com várias opções. Ele pode s
 
 ### Listar todas as tabelas
 
-Esta opção irá listar todos os esquemas das tabelas existentes.
+- Esta opção irá listar todos os esquemas das tabelas existentes.
 
 ### Listar uma tabelas
 
-Esta opção irá mostrar o esquema das tabela escolhida.
+- Esta opção irá mostrar o esquema das tabela escolhida.
 
 ### Criar uma nova linha na tabela
 
-Ao selecionar esta opção, o usuário será solicitado a escolher uma tabela e, em seguida, a fornecer os dados para a nova linha. Os dados devem ser fornecidos no formato correto para a tabela selecionada.
+- Ao selecionar esta opção, o usuário será solicitado a escolher uma tabela e, em seguida, a fornecer os dados para a nova linha. Os dados devem ser fornecidos no formato correto para a tabela selecionada.
 
 ### Listar todos os dados de uma tabela
 
-O usuário será solicitado a escolher uma tabela e, em seguida, esta opção irá listar todos os dados na tabela selecionada.
+- O usuário será solicitado a escolher uma tabela e, em seguida, esta opção irá listar todos os dados na tabela selecionada.
 
 ### Pesquisar valor em uma tabela
 
-Ao selecionar esta opção, o usuário será solicitado a fornecer uma tabela e valor de pesquisa.
-O usuário verá várias opções de filtros para pesquisa e deverá escolher uma.
-Depois de escolher o filtro, o programa retornará todos os resultados que correspondem a pesquisa com o filtro desejado.
+- Ao selecionar esta opção, o usuário será solicitado a fornecer uma tabela e valor de pesquisa.
+- O usuário verá várias opções de filtros para pesquisa e deverá escolher uma.
+- Depois de escolher o filtro, o programa retornará todos os resultados que correspondem a pesquisa com o filtro desejado.
 
 ### Apagar uma tupla (registro ou linha) de uma tabela
 
-Ao selecionar esta opção, o usuário será solicitado a fornecer um nome de tabela e Primary Key.
-Depois de fornecer os dados, o registro será apagado da tabela.
+- Ao selecionar esta opção, o usuário será solicitado a fornecer um nome de tabela e Primary Key.
+- Depois de fornecer os dados, o registro será apagado da tabela.
 
 ### Apagar uma tabela
 
-Ao selecionar esta opção, o usuário será solicitado a fornecer um nome de tabela.
-Depois de fornecer o nome da tablea, o arquivo de registros da tabela será apagado, e a linha no arquivo de tabelas que correspondia a tabela alvo, será apagado.
+- Ao selecionar esta opção, o usuário será solicitado a fornecer um nome de tabela.
+- Depois de fornecer o nome da tablea, o arquivo de registros da tabela será apagado, e a linha no arquivo de tabelas que correspondia a tabela alvo, será apagado.
 
 ## Como rodar o projeto?
 
