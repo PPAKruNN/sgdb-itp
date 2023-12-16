@@ -134,7 +134,6 @@ void updateRowInFile(char * filepath, size_t target, char * msg) {
 
     if(i == target) {
       if(strcmp(msg, "skip") == 0){
-        puts("skip");
         i++;
         continue;
       };
@@ -211,7 +210,7 @@ Table * loadTableInfo() {
 
 
     // loading table
-    char fpath[64];
+    char * fpath = malloc(sizeof(char) * 64);
     int columnCount;
     char cols[256];
     char * next = cols;
@@ -237,7 +236,7 @@ Table * loadTableInfo() {
 
     Table * table = malloc(sizeof(Table));
     table->name = tableName;
-    table->path = path;
+    table->path = fpath;
     table->columnCount = columnCount;
     table->rawInfo = tableInfo;
     table->rawColumns = cols;

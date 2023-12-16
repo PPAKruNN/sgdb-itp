@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/ppakrunn/Documents/projects/uf/itp/db/build",
-  "command": "/usr/bin/gcc -g -o CMakeFiles/db.dir/db.c.o -c /home/ppakrunn/Documents/projects/uf/itp/db/db.c",
-  "file": "/home/ppakrunn/Documents/projects/uf/itp/db/db.c"
-}
-]

@@ -304,8 +304,10 @@ void addRowToTable() {
     for (int i = 0; i < table->columnCount; i++)
     {
         system("clear");
+
         char value[32];
         char formated[33];
+
 
         if(table->columns[i].type == 'P') {
             puts("Enter value for Primary key \n(Column Type: Unique Unsigned Integer)");
@@ -341,11 +343,14 @@ void addRowToTable() {
         sprintf(formated, ":%s", value);
         strcat(row, formated);
 
+
     }
 
     strcat(row, ")");
 
     appendRowInFile(table->path, row);
+    
+    puts(table->path);
 
     fclose(table->file);
 

@@ -13,6 +13,15 @@ void menu() {
     int count = 9;
     char ** options = (char **) malloc(sizeof(char *) * count);
 
+    // ### Criar um tabela
+    // ### Listar o esquema de todas as tabelas
+    // ### Listar o esquema de uma tabela
+    // ### Criar uma nova linha na tabela.
+    // ### Listar todos os dados de uma tabela
+    // ### Pesquisar valor em uma tabela
+    // ### Apagar uma tupla (registro ou linha) de uma tabela
+    // ### Apagar uma tabela
+
     options[0] = "Create table";
     options[1] = "List all tables schema";
     options[2] = "Print one table schema";

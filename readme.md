@@ -23,33 +23,49 @@ As funcionalidades desenvolvidas foram:
 
 ## Como funciona?
 
+Ao executar o código, o usuário verá um menu com várias opções. Ele pode se movimentar usando as setas do teclado e confirmar a opção selecionada pressionando Enter.
+
 ### Criar um tabela
 
-- TODO
+- Ao selecionar esta opção, o usuário será solicitado a fornecer um nome para a nova tabela.
+
+- O usuário deve escolher um nome da PK.
+
+- Depois, o usuário deverá informar os dados da coluna no formato "coluna:tipo"
+
+- Quando ele criar todas as colunas, poderá apertar Ctrl+D ou escrever "quit" para finalizar a criação de tabela.
 
 ### Listar todas as tabelas
 
-- TODO
+Esta opção irá listar todos os esquemas das tabelas existentes.
 
-### Criar uma nova linha na tabela.
+### Listar uma tabelas
 
-- TODO
+Esta opção irá mostrar o esquema das tabela escolhida.
+
+### Criar uma nova linha na tabela
+
+Ao selecionar esta opção, o usuário será solicitado a escolher uma tabela e, em seguida, a fornecer os dados para a nova linha. Os dados devem ser fornecidos no formato correto para a tabela selecionada.
 
 ### Listar todos os dados de uma tabela
 
-- TODO
+O usuário será solicitado a escolher uma tabela e, em seguida, esta opção irá listar todos os dados na tabela selecionada.
 
 ### Pesquisar valor em uma tabela
 
-- TODO
+Ao selecionar esta opção, o usuário será solicitado a fornecer uma tabela e valor de pesquisa.
+O usuário verá várias opções de filtros para pesquisa e deverá escolher uma.
+Depois de escolher o filtro, o programa retornará todos os resultados que correspondem a pesquisa com o filtro desejado.
 
 ### Apagar uma tupla (registro ou linha) de uma tabela
 
-- TODO
+Ao selecionar esta opção, o usuário será solicitado a fornecer um nome de tabela e Primary Key.
+Depois de fornecer os dados, o registro será apagado da tabela.
 
 ### Apagar uma tabela
 
-- TODO
+Ao selecionar esta opção, o usuário será solicitado a fornecer um nome de tabela.
+Depois de fornecer o nome da tablea, o arquivo de registros da tabela será apagado, e a linha no arquivo de tabelas que correspondia a tabela alvo, será apagado.
 
 ## Como rodar o projeto?
 
